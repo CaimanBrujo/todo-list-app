@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { useTodoContext } from '../../context/useTodoContext'
-import { useLayoutContext } from '../../context/useLayoutContext'
+import { useLayoutContext } from '../../../context/useLayoutContext'
 import SidebarToggleButton from './SidebarToggleButton'
-import { Folder } from 'lucide-react'
+import ProjectsPanel from '../../todo/ProjectsPanel'
 import clsx from 'clsx'
 
-export default function ProjectsSidebar() {
-  const { state } = useTodoContext()
+export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar, isMobile } = useLayoutContext()
   const ref = useRef<HTMLDivElement>(null)
 
@@ -26,20 +24,7 @@ export default function ProjectsSidebar() {
   if (!isMobile) {
     return (
       <aside className="w-56 p-4 bg-[--color-gray-800] border-r border-border shadow-md text-text">
-        <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-          <Folder className="w-5 h-5" />
-          Projects
-        </h2>
-        <ul className="space-y-2">
-          {state.map((project) => (
-            <li
-              key={project.id}
-              className="text-sm hover:text-accent cursor-pointer truncate"
-            >
-              {project.name}
-            </li>
-          ))}
-        </ul>
+        <ProjectsPanel />
       </aside>
     )
   }
@@ -66,20 +51,7 @@ export default function ProjectsSidebar() {
             isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           )}
         >
-          <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-            <Folder className="w-5 h-5" />
-            Projects
-          </h2>
-          <ul className="space-y-2">
-            {state.map((project) => (
-              <li
-                key={project.id}
-                className="text-sm hover:text-accent cursor-pointer truncate"
-              >
-                {project.name}
-              </li>
-            ))}
-          </ul>
+          <ProjectsPanel />
         </div>
       </div>
 

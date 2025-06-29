@@ -1,4 +1,4 @@
-import SettingsMenu from './SettingsMenu'
+import SettingsMenu from './settings/SettingsMenu'
 import { Settings } from 'lucide-react'
 import React from 'react'
 
