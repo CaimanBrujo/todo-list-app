@@ -3,18 +3,18 @@ import { useLayoutContext } from '../../context/useLayoutContext'
 import clsx from 'clsx'
 
 export default function SidebarToggleButton() {
-  const { toggleSidebar, isSidebarOpen, isMobile } = useLayoutContext()
+  const { toggleSidebar, isMobile } = useLayoutContext()
 
-  // Mostrar solo en mobile y solo cuando el sidebar está cerrado
-  if (!isMobile || isSidebarOpen) return null
+  if (!isMobile) return null
 
   return (
     <button
       onClick={toggleSidebar}
       className={clsx(
-        'sticky top-16 z-30 h-[calc(100vh-8rem)] w-10 rounded-r-md shadow-md',
-        'bg-[--color-gray-800] border-r border-border text-white',
-        'flex items-center justify-center hover:bg-[--color-gray-600] transition-colors'
+        'w-10 h-full flex items-center justify-center text-text',
+        'bg-[--color-gray-800] border-r border-border',
+        'hover:bg-[--color-gray-600] transition-colors',
+        'border-l-0'
       )}
       aria-label="Toggle sidebar"
     >
