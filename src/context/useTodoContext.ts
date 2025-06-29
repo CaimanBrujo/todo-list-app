@@ -5,6 +5,8 @@ import type { Project, TodoAction } from '../types/Todo'
 export type TodoContextType = {
   state: Project[]
   dispatch: Dispatch<TodoAction>
+  selectedProjectId: string
+  setSelectedProjectId: (id: string) => void
 }
 
 export const TodoContext = createContext<TodoContextType | undefined>(undefined)

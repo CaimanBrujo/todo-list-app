@@ -1,5 +1,6 @@
 import type { Project, TodoAction } from '../types/Todo'
 import { v4 as uuidv4 } from 'uuid'
+import { initialData } from '../data/initialData'
 
 export const todoReducer = (
   state: Project[],
@@ -54,7 +55,7 @@ export const todoReducer = (
       )
 
     case 'RESET_ALL':
-      return []
+      return [...initialData]
 
     default:
       return state

@@ -1,5 +1,6 @@
 import React from 'react'
 import ThemeToggle from './ThemeToggle'
+import ResetButton from './ResetButton'
 
 type Props = {
   isOpen: boolean
@@ -45,12 +46,7 @@ export default function SettingsMenu({ isOpen, onClose }: Props) {
 
         <ThemeToggle />
 
-        <button
-          onClick={() => alert('Reset not implemented yet')}
-          className="mt-auto w-full py-2 px-4 border border-[--color-border] text-[--color-text] rounded hover:bg-[--color-button-hover] hover:text-white transition"
-        >
-          Reset
-        </button>
+        <ResetButton />
       </div>
     </div>
   )

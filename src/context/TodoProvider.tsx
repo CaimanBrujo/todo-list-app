@@ -1,32 +1,35 @@
-import { useReducer } from 'react'
+import { useReducer, useEffect, useState } from 'react'
 import { todoReducer } from '../reducers/todoReducer'
 import { TodoContext } from './useTodoContext'
 import type { Project } from '../types/Todo'
 import type { ReactNode } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { initialData } from '../data/initialData'
 
-const initialState: Project[] = [
-  {
-    id: 'default',
-    name: 'Default Project',
-    todos: [
-      {
-        id: uuidv4(),
-        title: 'Test Todo',
-        description: 'This is just a test task!',
-        dueDate: new Date().toISOString().split('T')[0],
-        priority: 'medium',
-        completed: false
-      }
-    ]
+const STORAGE_KEY = 'todoAppState'
+
+function loadInitialState(): Project[] {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    return stored ? JSON.parse(stored) : initialData
+  } catch {
+    return initialData
   }
-]
+}
 
 export function TodoProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(todoReducer, initialState)
+  const [state, dispatch] = useReducer(todoReducer, [], loadInitialState)
+  const [selectedProjectId, setSelectedProjectId] = useState<string>(
+    loadInitialState()[0]?.id || ''
+  )
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+  }, [state])
 
   return (
-    <TodoContext.Provider value={{ state, dispatch }}>
+    <TodoContext.Provider
+      value={{ state, dispatch, selectedProjectId, setSelectedProjectId }}
+    >
       {children}
     </TodoContext.Provider>
   )

@@ -2,8 +2,11 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Sidebar from './components/layout/sidebar/Sidebar'
 import TodoList from './components/todo/TodoList'
+import { useTodoContext } from './context/useTodoContext'
 
 export default function App() {
+  const { selectedProjectId } = useTodoContext()
+
   return (
     <div className="min-h-screen h-full flex flex-col bg-background text-text">
       <Header />
@@ -11,7 +14,7 @@ export default function App() {
         <Sidebar />
         <div className="flex-1 p-6 pl-10 md:pl-6">
           <h1 className="text-2xl font-bold mb-4">Your Tasks</h1>
-          <TodoList projectId="default" />
+          <TodoList projectId={selectedProjectId} />
         </div>
       </main>
       <Footer />
