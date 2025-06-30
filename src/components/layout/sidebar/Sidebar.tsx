@@ -40,7 +40,7 @@ export default function Sidebar() {
           'transition-all duration-700 ease-in-out',
           'md:border-r border-border',
           isSidebarOpen
-            ? 'w-[120px] px-4 pt-4'
+            ? 'w-[130px] px-4 pt-4'
             : 'w-0 px-0 pt-4 overflow-hidden'
         )}
       >
