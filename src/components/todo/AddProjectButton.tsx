@@ -10,9 +10,9 @@ export default function AddProjectButton({ onClick }: Props) {
       <button
         onClick={onClick}
         aria-label="Add new project"
-        className="w-10 h-10 rounded-full bg-[--color-background] border border-[--color-border] text-text hover-bg-muted transition-colors shadow-lg flex items-center justify-center"
+        className="mx-auto mt-6 flex items-center gap-2 text-accent hover:text-[color:var(--color-accent-soft)] transition-colors duration-150"
       >
-        <FolderPlus className="w-6 h-6" />
+        <FolderPlus className="w-10 h-10" />
       </button>
     </div>
   )

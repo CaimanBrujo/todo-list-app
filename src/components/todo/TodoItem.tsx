@@ -31,10 +31,12 @@ export default function TodoItem({ todo }: Props) {
 
       <p className="text-sm text-muted">{todo.description}</p>
 
-      <div className="flex items-center gap-2 text-sm text-muted">
-        <CalendarDays className="w-4 h-4" />
-        <span>{todo.dueDate}</span>
-      </div>
+      {todo.dueDate && (
+        <div className="flex items-center gap-2 text-sm text-muted">
+          <CalendarDays className="w-4 h-4 text-text" />
+          <span>{todo.dueDate}</span>
+        </div>
+      )}
     </li>
   )
 }
