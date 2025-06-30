@@ -1,4 +1,3 @@
-// SettingsMenu.tsx
 import React, { useState } from 'react'
 import ThemeToggle from './ThemeToggle'
 import ResetButton from './ResetButton'

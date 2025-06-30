@@ -1,86 +1,132 @@
-# React + TypeScript + Vite + Tailwind CSS v4 Template
+# Todo List App
 
-## Quick Start
+A clean and responsive task manager built with **React**, **TypeScript**, and **Tailwind CSS v4**. The app supports multiple projects, each containing a list of todos with full create/edit/delete functionality. State is managed with `useReducer` and persisted in `localStorage`.
 
-```bash
-npm install
-npm run dev      # Start dev server
-npm run lint     # Run ESLint
-npm run format   # Format code with Prettier
-npm run build    # Build for production
-npm run preview  # Preview production build
+## Live Preview
+
+https://todo-list-app-ten-nu.vercel.app/
+
+## Features
+
+- Create and delete projects
+- Add todos with title, description, due date, and priority
+- Edit and delete todos inside a modal interface
+- One-todo-at-a-time inline editing experience
+- Global state management via `useReducer` and Context API
+- Automatic localStorage persistence
+- Fully responsive dark-mode UI with Tailwind CSS v4
+
+## Stack
+
+- React 19
+- TypeScript 5.8
+- Vite 6
+- Tailwind CSS v4
+- ESLint 9
+- Prettier 3
+- uuid
+- clsx
+
+## Additional Libraries
+
+### `uuid`
+
+Used to generate unique IDs for projects and todos.
+
+```ts
+import { v4 as uuidv4 } from 'uuid'
+
+const newTodo = {
+  id: uuidv4(),
+  title: 'Example Task',
+  ...
+}
 ```
 
----
+### `clsx`
 
-## Stack Overview
+Utility for conditionally joining classNames.
 
-- **React 19**
-- **TypeScript 5.8**
-- **Vite 6**
-- **Tailwind CSS v4**
-- **Lucide React (icons)**
-- **ESLint 9**
-- **Prettier 3**
+```tsx
+import clsx from 'clsx'
 
----
+const buttonClass = clsx(
+  'text-sm',
+  isActive && 'text-accent',
+  isDisabled && 'opacity-50 cursor-not-allowed'
+)
+```
 
 ## Project Structure
 
 ```
-template-react-ts/
+todo-list-app/
 ├── public/
 ├── src/
-│   ├── assets/
 │   ├── components/
-│   │   ├── Footer.tsx
-│   │   ├── Header.tsx
-│   │   └── ThemeToggle.tsx
+│   │   ├── layout/
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   └── settings/
+│   │   │   │   ├── ResetButton.tsx
+│   │   │   │   ├── ResetConfirmModal.tsx
+│   │   │   │   ├── SettingsMenu.tsx
+│   │   │   │   └── ThemeToggle.tsx
+│   │   │   └── sidebar/
+│   │   │       ├── Sidebar.tsx
+│   │   │       └── SidebarToggleButton.tsx
+│   │   └── todo/
+│   │       ├── AddProjectButton.tsx
+│   │       ├── AddProjectModal.tsx
+│   │       ├── AddTodoButton.tsx
+│   │       ├── EditProjectModal.tsx
+│   │       ├── NewTodoForm.tsx
+│   │       ├── ProjectsPanel.tsx
+│   │       ├── TodoFormFields.tsx
+│   │       ├── TodoItem.tsx
+│   │       └── TodoList.tsx
+│   ├── context/
+│   │   ├── LayoutProvider.tsx
+│   │   ├── TodoProvider.tsx
+│   │   ├── useLayoutContext.ts
+│   │   └── useTodoContext.ts
+│   ├── data/
+│   │   └── initialData.ts
+│   ├── reducers/
+│   │   └── todoReducer.ts
+│   ├── types/
+│   │   └── Todo.ts
 │   ├── App.tsx
 │   ├── index.css
 │   ├── main.tsx
 │   └── vite-env.d.ts
-├── .gitattributes
 ├── .gitignore
-├── .prettierignore
 ├── .prettierrc
 ├── eslint.config.js
 ├── index.html
-├── LICENSE
-├── package-lock.json
 ├── package.json
 ├── postcss.config.js
-├── Readme.md
 ├── tailwind.config.ts
-├── tsconfig.app.json
 ├── tsconfig.json
+├── tsconfig.app.json
 ├── tsconfig.node.json
 └── vite.config.ts
 ```
 
----
+## Setup
 
-## Icons with Lucide
-
-This template includes [Lucide](https://lucide.dev/icons) for using icons as React components.
-
-Example usage:
-
-```tsx
-import { Sun, Moon } from 'lucide-react'
-;<Sun className="w-5 h-5 text-[--color-text]" />
+```bash
+git clone https://github.com/CaimanBrujo/todo-list-app.git
+cd todo-list-app
+npm install
 ```
 
----
+## Scripts
 
-## Recommended VS Code Extensions
-
-To get the best developer experience:
-
-- **ESLint** – by Dirk Baeumer
-- **Prettier – Code formatter** – by Prettier
-- **Tailwind CSS IntelliSense** – by Tailwind Labs
-- **PostCSS Language Support** – by csstools
-- **Lucide Icons (optional preview)** – by Lucide.dev
-
----
+```bash
+npm run dev       # Start development server
+npm run lint      # Run ESLint
+npm run format    # Format with Prettier
+npm run build     # Build for production
+npm run preview   # Preview production build
+```
