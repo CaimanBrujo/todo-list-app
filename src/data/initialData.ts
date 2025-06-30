@@ -1,6 +1,13 @@
 import type { Project } from '../types/Todo'
 import { v4 as uuidv4 } from 'uuid'
 
+const today = new Date()
+const getISODate = (offsetDays: number) => {
+  const date = new Date(today)
+  date.setDate(today.getDate() + offsetDays)
+  return date.toISOString().split('T')[0]
+}
+
 export const initialData: Project[] = [
   {
     id: uuidv4(),
@@ -10,7 +17,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Finish project brief',
         description: 'Complete the document and send it to the client',
-        dueDate: '2025-07-01',
+        dueDate: getISODate(1), // mañana
         priority: 'high',
         completed: false
       },
@@ -18,7 +25,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Update Trello board',
         description: 'Organize tasks by priority',
-        dueDate: '2025-07-02',
+        dueDate: getISODate(2), // pasado mañana
         priority: 'medium',
         completed: false
       },
@@ -26,7 +33,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Reply to emails',
         description: 'Respond to inquiries from the design team',
-        dueDate: '2025-06-30',
+        dueDate: getISODate(0), // hoy
         priority: 'low',
         completed: true
       }
@@ -40,7 +47,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Grocery shopping',
         description: 'Buy fruits, vegetables, and coffee',
-        dueDate: '2025-06-29',
+        dueDate: getISODate(0),
         priority: 'medium',
         completed: false
       },
@@ -48,7 +55,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Call mom',
         description: 'Check in and catch up',
-        dueDate: '2025-06-30',
+        dueDate: getISODate(-1),
         priority: 'low',
         completed: true
       },
@@ -56,7 +63,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Read book',
         description: 'Finish chapter 6 of Atomic Habits',
-        dueDate: '2025-07-03',
+        dueDate: getISODate(3),
         priority: 'low',
         completed: false
       }
@@ -70,7 +77,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Morning run',
         description: '5km around the park',
-        dueDate: '2025-06-29',
+        dueDate: getISODate(0),
         priority: 'high',
         completed: false
       },
@@ -78,7 +85,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Stretching routine',
         description: '10 minutes of yoga and stretches',
-        dueDate: '2025-06-29',
+        dueDate: getISODate(-2),
         priority: 'medium',
         completed: true
       },
@@ -86,7 +93,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Track calories',
         description: 'Log meals into the app',
-        dueDate: '2025-06-29',
+        dueDate: getISODate(1),
         priority: 'low',
         completed: false
       }
