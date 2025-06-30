@@ -37,3 +37,9 @@ body,
     --color-border: var(--color-gray-500);
   }
 }
+
+@layer utilities {
+  .hover-bg-muted:hover {
+    background-color: var(--color-muted);
+  }
+}

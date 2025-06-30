@@ -22,6 +22,9 @@ export type TodoAction =
     }
   | { type: 'TOGGLE_TODO'; payload: { projectId: string; todoId: string } }
   | { type: 'DELETE_TODO'; payload: { projectId: string; todoId: string } }
-  | { type: 'ADD_PROJECT'; payload: { name: string } }
+  | {
+      type: 'ADD_PROJECT'
+      payload: { id: string; name: string; todos: Todo[] }
+    }
   | { type: 'DELETE_PROJECT'; payload: { projectId: string } }
   | { type: 'RESET_ALL' }

@@ -1,9 +1,13 @@
 import { Folder } from 'lucide-react'
 import clsx from 'clsx'
+import { useState } from 'react'
 import { useTodoContext } from '../../context/useTodoContext'
+import AddProjectButton from './AddProjectButton'
+import AddProjectModal from './AddProjectModal'
 
 export default function ProjectsPanel() {
   const { state, selectedProjectId, setSelectedProjectId } = useTodoContext()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <div>
@@ -25,6 +29,12 @@ export default function ProjectsPanel() {
           </li>
         ))}
       </ul>
+
+      <AddProjectButton onClick={() => setIsModalOpen(true)} />
+      <AddProjectModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }
