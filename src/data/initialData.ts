@@ -17,7 +17,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Finish project brief',
         description: 'Complete the document and send it to the client',
-        dueDate: getISODate(1), // mañana
+        dueDate: getISODate(1),
         priority: 'high',
         completed: false
       },
@@ -25,7 +25,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Update Trello board',
         description: 'Organize tasks by priority',
-        dueDate: getISODate(2), // pasado mañana
+        dueDate: getISODate(2),
         priority: 'medium',
         completed: false
       },
@@ -33,7 +33,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Reply to emails',
         description: 'Respond to inquiries from the design team',
-        dueDate: getISODate(0), // hoy
+        dueDate: getISODate(0),
         priority: 'low',
         completed: true
       }
@@ -47,15 +47,15 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Grocery shopping',
         description: 'Buy fruits, vegetables, and coffee',
-        dueDate: getISODate(0),
+        dueDate: getISODate(1),
         priority: 'medium',
         completed: false
       },
       {
         id: uuidv4(),
-        title: 'Call mom',
+        title: 'Call my friend Ivan Z',
         description: 'Check in and catch up',
-        dueDate: getISODate(-1),
+        dueDate: getISODate(1),
         priority: 'low',
         completed: true
       },
@@ -77,7 +77,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Morning run',
         description: '5km around the park',
-        dueDate: getISODate(0),
+        dueDate: getISODate(2),
         priority: 'high',
         completed: false
       },
@@ -85,7 +85,7 @@ export const initialData: Project[] = [
         id: uuidv4(),
         title: 'Stretching routine',
         description: '10 minutes of yoga and stretches',
-        dueDate: getISODate(-2),
+        dueDate: getISODate(3),
         priority: 'medium',
         completed: true
       },

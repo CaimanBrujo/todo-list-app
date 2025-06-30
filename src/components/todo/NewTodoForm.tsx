@@ -1,6 +1,8 @@
+// components/todo/NewTodoForm.tsx
 import { useState, useEffect } from 'react'
 import { useTodoContext } from '../../context/useTodoContext'
 import { Plus, X } from 'lucide-react'
+import TodoFormFields from './TodoFormFields'
 
 type Props = {
   projectId: string
@@ -25,6 +27,13 @@ export default function NewTodoForm({ projectId, onConfirm, onCancel }: Props) {
       return () => clearTimeout(timer)
     }
   }, [showError])
+
+  const handleChange = (field: string, value: string) => {
+    if (field === 'title') setTitle(value)
+    if (field === 'description') setDescription(value)
+    if (field === 'dueDate') setDueDate(value)
+    if (field === 'priority') setPriority(value as Priority)
+  }
 
   const handleSubmit = () => {
     if (!title.trim()) {
@@ -56,40 +65,13 @@ export default function NewTodoForm({ projectId, onConfirm, onCancel }: Props) {
         </div>
       )}
 
-      <input
-        type="text"
-        placeholder="Title"
-        className="w-full bg-transparent border border-border px-3 py-2 rounded text-sm"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+      <TodoFormFields
+        title={title}
+        description={description}
+        dueDate={dueDate}
+        priority={priority}
+        onChange={handleChange}
       />
-
-      <textarea
-        placeholder="Description"
-        className="w-full bg-transparent border border-border px-3 py-2 rounded text-sm resize-none"
-        rows={3}
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-
-      <div className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="date"
-          className="text-[--color-text] w-full sm:w-1/2 bg-transparent border border-border px-3 py-2 rounded text-sm"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-        />
-
-        <select
-          className="w-full sm:w-1/2 bg-transparent border border-border px-3 py-2 rounded text-sm"
-          value={priority}
-          onChange={(e) => setPriority(e.target.value as Priority)}
-        >
-          <option value="low">Low priority</option>
-          <option value="medium">Medium priority</option>
-          <option value="high">High priority</option>
-        </select>
-      </div>
 
       <div className="flex justify-end gap-2">
         <button

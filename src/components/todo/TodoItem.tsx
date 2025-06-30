@@ -39,7 +39,6 @@ export default function TodoItem({ todo }: Props) {
     })
   }
 
-  // Texto de fecha sin usar librerías
   let dueText = ''
   if (todo.dueDate) {
     const now = new Date()

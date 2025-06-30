@@ -57,6 +57,20 @@ export const todoReducer = (
     case 'RESET_ALL':
       return [...initialData]
 
+    case 'EDIT_PROJECT':
+      return state.map((p) =>
+        p.id === action.payload.projectId
+          ? { ...p, name: action.payload.name }
+          : p
+      )
+
+    case 'SET_TODOS':
+      return state.map((p) =>
+        p.id === action.payload.projectId
+          ? { ...p, todos: action.payload.todos }
+          : p
+      )
+
     default:
       return state
   }

@@ -28,3 +28,5 @@ export type TodoAction =
     }
   | { type: 'DELETE_PROJECT'; payload: { projectId: string } }
   | { type: 'RESET_ALL' }
+  | { type: 'EDIT_PROJECT'; payload: { projectId: string; name: string } }
+  | { type: 'SET_TODOS'; payload: { projectId: string; todos: Todo[] } }
