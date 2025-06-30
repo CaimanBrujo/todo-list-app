@@ -17,9 +17,11 @@ function loadInitialState(): Project[] {
 }
 
 export function TodoProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(todoReducer, [], loadInitialState)
+  const initial = loadInitialState()
+
+  const [state, dispatch] = useReducer(todoReducer, initial)
   const [selectedProjectId, setSelectedProjectId] = useState<string>(
-    loadInitialState()[0]?.id || ''
+    initial[0]?.id || ''
   )
 
   useEffect(() => {

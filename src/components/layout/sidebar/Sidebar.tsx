@@ -32,17 +32,16 @@ export default function Sidebar() {
   return (
     <aside
       ref={ref}
-      className={clsx(
-        'flex h-full z-30 transition-all duration-700 ease-in-out',
-        isSidebarOpen ? 'w-56' : 'w-10'
-      )}
+      className="flex h-full z-30 transition-all duration-700 ease-in-out"
     >
       <div
         className={clsx(
           'h-full bg-[--color-gray-800] text-text',
           'transition-all duration-700 ease-in-out',
           'md:border-r border-border',
-          isSidebarOpen ? 'w-35 px-4 pt-4' : 'w-0 px-0 pt-4 overflow-hidden'
+          isSidebarOpen
+            ? 'w-[120px] px-4 pt-4'
+            : 'w-0 px-0 pt-4 overflow-hidden'
         )}
       >
         <div
@@ -54,7 +53,6 @@ export default function Sidebar() {
           <ProjectsPanel />
         </div>
       </div>
-
       <SidebarToggleButton />
     </aside>
   )

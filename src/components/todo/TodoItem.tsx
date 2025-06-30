@@ -1,5 +1,5 @@
 import type { Todo } from '../../types/Todo'
-import { CalendarDays, Flag, CheckCircle2, Circle } from 'lucide-react'
+import { CalendarDays, CheckCircle2, Circle } from 'lucide-react'
 import clsx from 'clsx'
 
 type Props = {
@@ -7,17 +7,17 @@ type Props = {
 }
 
 export default function TodoItem({ todo }: Props) {
-  const borderColor = clsx({
-    'border-l-4 border-green-500': todo.priority === 'low',
-    'border-l-4 border-yellow-500': todo.priority === 'medium',
-    'border-l-4 border-red-500': todo.priority === 'high'
+  const leftBorderColor = clsx({
+    'border-l-4 border-l-green-500': todo.priority === 'low',
+    'border-l-4 border-l-yellow-500': todo.priority === 'medium',
+    'border-l-4 border-l-red-500': todo.priority === 'high'
   })
 
   return (
     <li
       className={clsx(
-        'border border-border rounded p-4 space-y-2',
-        borderColor
+        'border border-[--color-border] rounded p-4 space-y-2',
+        leftBorderColor
       )}
     >
       <div className="flex justify-between items-center">
@@ -34,11 +34,6 @@ export default function TodoItem({ todo }: Props) {
       <div className="flex items-center gap-2 text-sm text-muted">
         <CalendarDays className="w-4 h-4" />
         <span>{todo.dueDate}</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-sm text-muted">
-        <Flag className="w-4 h-4" />
-        <span className="capitalize">{todo.priority}</span>
       </div>
     </li>
   )

@@ -17,7 +17,7 @@ export default function ProjectsPanel() {
             key={project.id}
             onClick={() => setSelectedProjectId(project.id)}
             className={clsx(
-              'text-sm hover:text-accent cursor-pointer truncate',
+              'text-lg hover:text-accent cursor-pointer truncate',
               selectedProjectId === project.id && 'font-semibold text-accent'
             )}
           >
