@@ -39,7 +39,7 @@ export default function EditProjectModal({ project, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center">
-      <div className="bg-[#1a1a1a] text-text p-6 rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-border space-y-4">
+      <div className="bg-background text-text p-6 rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-border space-y-4">
         <h2 className="text-xl font-semibold">Edit Project</h2>
 
         <input
@@ -53,7 +53,7 @@ export default function EditProjectModal({ project, onClose }: Props) {
             editingTodoId === todo.id ? (
               <div
                 key={todo.id}
-                className="space-y-2 bg-[#2a2a2a] p-2 rounded text-text"
+                className="space-y-2 bg-muted/20 p-2 rounded text-text"
               >
                 <TodoFormFields
                   title={todo.title}
@@ -82,7 +82,7 @@ export default function EditProjectModal({ project, onClose }: Props) {
             ) : (
               <div
                 key={todo.id}
-                className="flex items-center justify-between px-3 py-2 rounded cursor-pointer hover:bg-[#333] bg-[#2a2a2a] text-text"
+                className="flex items-center justify-between px-3 py-2 rounded cursor-pointer hover-bg-muted bg-muted/20 text-text"
                 onClick={() => setEditingTodoId(todo.id)}
               >
                 <span className="truncate text-sm">{todo.title}</span>

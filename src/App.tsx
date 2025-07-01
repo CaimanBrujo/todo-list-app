@@ -11,7 +11,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Header />
       <main className="flex-1 relative justify-center flex">
-        <div className="flex w-full max-w-[1200px] border-l border-r border-[--color-border]">
+        <div className="flex w-full max-w-[1200px] border-[--color-border]">
           <Sidebar />
           <div className="flex-1 p-6 pl-10 md:pl-6">
             <TodoList projectId={selectedProjectId} />
